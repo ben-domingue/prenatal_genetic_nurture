@@ -17,7 +17,7 @@ robust.se <- function(model, cluster=df$family){
 std<-function(x) (x-mean(x,na.rm=TRUE))/sd(x,na.rm=TRUE)
 out<-list()
 for (yv in c("ses.pc","health.pc")) {
-    paste(yv,"~m_pgs_ea+",covars,sep="")->f1
+    paste(yv,"~m_pgs_ea+age+",covars,sep="")->f1
     as.formula(f1)->f1
     df[,c("motherid",all.vars(f1))]->tmp
     tmp[rowSums(is.na(tmp))==0,]->tmp
@@ -49,7 +49,7 @@ do.call("rbind",tab2)->tabA
 std<-function(x) (x-mean(x,na.rm=TRUE))/sd(x,na.rm=TRUE)
 out<-list()
 for (yv in c("eyfsp","ks1")) {
-    paste(yv,"~m_pgs_ea+c_pgs_ea+",covars,sep="")->f1
+    paste(yv,"~m_pgs_ea+c_pgs_ea+age+",covars,sep="")->f1
     as.formula(f1)->f1
     df[,c("motherid",all.vars(f1))]->tmp
     tmp[rowSums(is.na(tmp))==0,]->tmp

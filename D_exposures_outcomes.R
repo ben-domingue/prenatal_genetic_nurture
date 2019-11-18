@@ -23,7 +23,7 @@ paste(paste("m_pc_bri_",1:10,sep=""),collapse="+")->covars
 std<-function(x) (x-mean(x,na.rm=TRUE))/sd(x,na.rm=TRUE)
 out<-list()
 for (yv in c("eyfsp","ks1")) {
-    paste(yv,"~ses.pc+health.pc+",covars,sep="")->f1
+    paste(yv,"~ses.pc+health.pc+age+",covars,sep="")->f1
     as.formula(f1)->f1
     df[,c("motherid",all.vars(f1))]->tmp
     tmp[rowSums(is.na(tmp))==0,]->tmp

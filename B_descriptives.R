@@ -44,30 +44,54 @@ for (nm in names(vars)) hist(tmp[[nm ]],xlab=vars[nm],ylab="",breaks=40,main="",
 
 ######################################################################
 ##corelation plot
-vars<-c(m_pgs_ea="mom pgs",
-        c_pgs_ea="kid pgs",
-        edu="mom edu",
-        eyfsp="eyfsp",
-        ks1="ks1",
-        health.pc="health.pc",
-        ses.pc="ses.pc",
-        age="mom age",
-        bmi="mom bmi",
-        hlth="mental health",
-        vit="vitamins",
-        smk="smoking",
-        cig="cigarettes",
-        alc="alcohol",
-        caff_day="caffeine",
-        drg="drug use",
-        solo="single",
-        job="employed",
-        mlv="job leave",
-        mdi="deprivation",
-        #maternal_strain="strain",
-        sleep_probs="sleep",
-        sub_fin_diff="$ difficulty",
-        benefits_received="gvmt benefits"
+## vars<-c(m_pgs_ea="mom pgs",
+##         c_pgs_ea="kid pgs",
+##         edu="mom edu",
+##         eyfsp="eyfsp",
+##         ks1="ks1",
+##         health.pc="health.pc",
+##         ses.pc="ses.pc",
+##         age="mom age",
+##         bmi="mom bmi",
+##         hlth="mental health",
+##         vit="vitamins",
+##         smk="smoking",
+##         cig="cigarettes",
+##         alc="alcohol",
+##         caff_day="caffeine",
+##         drg="drug use",
+##         solo="single",
+##         job="employed",
+##         mlv="job leave",
+##         mdi="deprivation",
+##         #maternal_strain="strain",
+##         sleep_probs="sleep",
+##         sub_fin_diff="$ difficulty",
+##         benefits_received="gvmt benefits"
+##         )
+vars<-c(m_pgs_ea="Maternal PGS",
+        c_pgs_ea="Child PGS",
+        age="Maternal Age",
+        eyfsp="EYFSP",
+        ks1="Key Stage 1",
+        health.pc="Health Composite.",
+        bmi="BMI",
+        hlth="Mental Health",
+        vit="Vitamin use",
+        smk="Indirect Smoke Exposure",
+        cig="Cigarette use",
+        alc="Alcohol Consumption",
+        caff_day="Caffeine use",
+        drg="Drug use",
+        sleep_probs="Sleep Problems",
+        ses.pc="SES Composite.",
+        edu="Maternal Education",
+        solo="Single",
+        job="Employed",
+        mlv="Maternal Leave",
+        mdi="Neighborhood Deprivation",
+        sub_fin_diff="Financial Difficulty",
+        benefits_received="Receipt of governmental benefits"
         )
 df[,names(vars)]->tmp
 C<-cor(tmp,use='p')
@@ -77,7 +101,10 @@ vars[nms]->rownames(C)->colnames(C)
 dump("C","")
 
 library(corrplot)
-par(mar=rep(3,4))
-corrplot.mixed(C ,number.cex=.7,diag='l',tl.pos="lt",lower.col = "black")
+par(mar=c(1,10,15,1))
+corrplot.mixed(C ,number.cex=.7,diag='l',tl.pos="lt",lower.col = "black",cex.lab=.5)
+
+
+
 
 

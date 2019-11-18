@@ -37,7 +37,7 @@ if (covars!="") paste("+",covars,sep="")->covars
 std<-function(x) (x-mean(x,na.rm=TRUE))/sd(x,na.rm=TRUE)
 N<-out<-list()
 for (yv in names(vars)) {
-    paste(yv,"~m_pgs_ea+c_pgs_ea",covars,sep="")->f1
+    paste(yv,"~m_pgs_ea+c_pgs_ea+age",covars,sep="")->f1
     as.formula(f1)->f1
     df[,c("motherid",all.vars(f1))]->tmp
     tmp[rowSums(is.na(tmp))==0,]->tmp
